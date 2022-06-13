@@ -20,9 +20,6 @@ const PrivateR = ({ component: Component, auth, roles, path, ...rest }) => {
       if (!auth.isAuthenticated)
         return <Redirect to="/login" />
 
-      if (props.location.pathname === '/')
-        return <Redirect to={'/pay' } />
-
       return <Component {...props} />
     }}
   />
@@ -41,7 +38,6 @@ export const MainRouter = () => {
     <Router>
       <Switch>
         <Route path="/login"><Login/></Route>
-        <PrivateRoute path="/pay" component={ContactForm} />
         <PrivateRoute path="/" component={Login} />
       </Switch>
     </Router>

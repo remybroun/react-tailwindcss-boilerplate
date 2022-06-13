@@ -4,7 +4,7 @@ import {Redirect} from "react-router-dom";
 
 
 const login = (email, password) => dispatch => {
-  console.log("SUCCESS")
+  console.log("LOGIN")
     dispatch({
       type: "LOGIN_SUCCESS",
       payload: {
@@ -12,14 +12,9 @@ const login = (email, password) => dispatch => {
             first_name : "first_name",
             last_name: "last_name",
             role:"role",
-            address: "address",
-            birthdate: "birthdate",
             email: "email",
-            doctor_profile: "doctor_profile",
-            terms_accepted_at: "terms_accepted_at",
             id: "id",
             phone: "phone",
-            sex: "sex",
         },
       }
     });
@@ -27,11 +22,11 @@ const login = (email, password) => dispatch => {
 const Login = (props) => {
   const handleLogin = (e) => {
     e.preventDefault()
-    props.login("email", "password")
+    // props.login("email", "password")
   }
-
+  console.log(props.isAuthenticated)
   if(props.isAuthenticated)
-    return <Redirect to="/pay" />
+    return <Redirect to="/" />
 
 
   return (
@@ -100,7 +95,6 @@ const Login = (props) => {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
   return {
     isAuthenticated: state.isAuthenticated,
     OTPVerified: state.OTPVerified,
